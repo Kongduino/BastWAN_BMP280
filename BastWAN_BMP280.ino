@@ -38,11 +38,11 @@ void loop() {
     //get and print atmospheric pressure data
     Serial.print("MSL: ");
     Serial.print(p0 / 100.0);
-    Serial.println("HPa");
+    Serial.println(" HPa");
     Serial.print("Pressure: ");
     p1 = bmp280.getPressure();
     Serial.print(p1 / 100.0);
-    Serial.println("HPa");
+    Serial.println(" HPa");
     //get and print altitude data
     Serial.print("Altitude according to the lib (snort): ");
     Serial.print(bmp280.calcAltitude(p1));
@@ -66,10 +66,9 @@ void loop() {
     StaticJsonDocument<200> doc;
     DeserializationError error = deserializeJson(doc, mb);
     if (!error) {
-      const char* msl = doc["MSL"];
-      float newMSL = atof(msl);
+      float newMSL = doc["MSL"];
+      Serial.print("New MSL: "); Serial.println(newMSL);
       if (newMSL > 0.0) {
-        Serial.print("New MSL: "); Serial.println(newMSL);
         p0 = newMSL * 100;
       }
     } else {
