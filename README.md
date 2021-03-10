@@ -25,4 +25,9 @@ float calcAltitude(float p0, float p1, float t) {
 }
 ```
 
+You can send a JSON message in the Serial Monitor to change the MSL:
+
+```JSON
+{"MSL":"1022.1"}
+```
 ![Screenshot.png](Screenshot.png)
